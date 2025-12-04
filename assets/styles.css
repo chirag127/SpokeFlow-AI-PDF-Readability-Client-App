@@ -1,0 +1,355 @@
+/* SpokeFlow AI PDF Readability Client App - assets/styles.css */
+
+/* Global Styles */
+:root {
+  --primary-color: #4a90e2; /* A calm, professional blue */
+  --secondary-color: #50e3c2; /* A vibrant accent */
+  --background-color: #f4f7f6; /* Light, airy background */
+  --text-color: #333333; /* Dark grey for readability */
+  --border-color: #e0e0e0; /* Subtle borders */
+  --code-background: #2d2d2d; /* Dark for code blocks */
+  --code-text: #cccccc; /* Light text for code */
+  --error-color: #d9534f; /* Red for errors */
+}
+
+body {
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 2.5em;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 30px;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-top: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* File Upload and Processing */
+.upload-section {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.upload-section h2 {
+  margin-top: 0;
+}
+
+.drop-area {
+  border: 2px dashed var(--border-color);
+  padding: 40px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+.drop-area:hover {
+  border-color: var(--primary-color);
+  background-color: #f9f9f9;
+}
+
+.drop-area.dragover {
+  border-color: var(--secondary-color);
+  background-color: #e8f7ff;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-button, .process-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  margin: 10px 5px;
+}
+
+.upload-button:hover, .process-button:hover {
+  background-color: #3a7bc8; /* Darker shade of primary */
+  transform: translateY(-2px);
+}
+
+.process-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.file-item {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03);
+}
+
+.file-item span {
+  flex-grow: 1;
+  margin-right: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-item .remove-btn {
+  background: var(--error-color);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.file-item .remove-btn:hover {
+  background: #c0392b;
+}
+
+/* Processing Status & Results */
+.status-section {
+  margin-top: 40px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.status-message {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.processing-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--secondary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: var(--error-color);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.download-link {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.download-button {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.download-button:hover {
+  background-color: #42c4a7;
+  transform: translateY(-3px);
+}
+
+.download-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Code Blocks & Tables */
+pre {
+  background-color: var(--code-background);
+  color: var(--code-text);
+  padding: 20px;
+  border-radius: 5px;
+  overflow-x: auto;
+  white-space: pre-wrap; /* Wrap long lines */
+  word-wrap: break-word;
+  font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  border: 1px solid #444;
+}
+
+code {
+  font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .upload-section, .status-section {
+    padding: 20px;
+  }
+
+  .drop-area {
+    padding: 30px;
+  }
+
+  .upload-button, .process-button, .download-button {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+
+  pre {
+    font-size: 0.8em;
+    padding: 15px;
+  }
+
+  table, th, td {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  main {
+    padding: 20px 10px;
+  }
+
+  .upload-button, .process-button, .download-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .file-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .file-item span {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
